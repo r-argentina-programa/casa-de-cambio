@@ -18,7 +18,6 @@ export function mostrarListadoMonedas(monedas, callbackSeleccionMoneda) {
   const $lista = document.createElement('div'); // esto antes era un ul
   $lista.className = 'list-group';
 
-  console.log(monedas);
   monedas.sort().forEach((base) => {
     const $item = document.createElement('a'); // esto antes era un li
     $item.href = '#';
@@ -36,7 +35,8 @@ export function mostrarListadoMonedas(monedas, callbackSeleccionMoneda) {
     });
     $lista.appendChild($item);
   });
-  return $lista;
+
+  document.querySelector('#monedas').appendChild($lista);
 }
 
 export function obtenerMonedaSeleccionada() {
@@ -51,4 +51,15 @@ export function obtenerMonedaSeleccionada() {
 export function obtenerFechaSeleccionada() {
   const fechaSeleccionada = document.querySelector('#fecha').value;
   return fechaSeleccionada || undefined;
+}
+
+export function configurarInputFecha(callbackSeleccionFecha) {
+  const $fecha = document.querySelector('#fecha');
+
+  $fecha.setAttribute('max', (new Date()).toISOString().split('T')[0]);
+  $fecha.addEventListener('change', callbackSeleccionFecha);
+}
+
+export function mostrarCartelActualizacion() {
+  document.querySelector('#cambio tbody').innerHTML = 'Cargando...';
 }
