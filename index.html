@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Index.html</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+  <h1>Casa de Cambio</h1>
+
+  <div id="app">
+    <div class="form-group row">
+      <label for="example-date-input" class="col-2 col-form-label">Fecha</label>
+      <div class="col-10">
+        <input class="form-control" type="date" id="fecha">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6" id="monedas">
+      </div>
+      <div class="col-6" id="cambio">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Moneda</th>
+              <th scope="col">Cambio</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="src/index.js" type="module"></script>
+</body>
+
+</html>
