@@ -45,10 +45,12 @@ function mostrarCartelActualizacion() {
 }
 
 
-async function actualizar() {
+function actualizar() {
   mostrarCartelActualizacion();
-  const cambios = await obtenerCambios(obtenerMonedaSeleccionada(), obtenerFechaSeleccionada());
-  mostrarCambios(cambios);
+  obtenerCambios(obtenerMonedaSeleccionada(), obtenerFechaSeleccionada())
+    .then((cambios) => {
+      mostrarCambios(cambios);
+    });
 }
 
 
@@ -82,9 +84,12 @@ function configurarInputFecha() {
   $fecha.addEventListener('change', actualizar);
 }
 
-async function inicializar() {
-  mostrarListadoMonedas(await obtenerMonedas());
+function inicializar() {
+  obtenerMonedas().then((monedas) => {
+    mostrarListadoMonedas(monedas);
+  });
+
   configurarInputFecha();
 }
 
-inicializar().catch((e) => console.error(e));
+inicializar();
