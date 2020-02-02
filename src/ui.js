@@ -18,6 +18,7 @@ export function mostrarListadoMonedas(monedas, callbackSeleccionMoneda) {
   const $lista = document.createElement('div'); // esto antes era un ul
   $lista.className = 'list-group';
 
+  console.log(monedas);
   monedas.sort().forEach((base) => {
     const $item = document.createElement('a'); // esto antes era un li
     $item.href = '#';

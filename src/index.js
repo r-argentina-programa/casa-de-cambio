@@ -1,21 +1,19 @@
-import { obtenerMonedas, obtenerCambios } from './exchange.js';
+import { obtenerMonedas, obtenerCambios } from './cambios.js';
 import {
   mostrarCambios, mostrarListadoMonedas, obtenerFechaSeleccionada, obtenerMonedaSeleccionada,
 } from './ui.js';
 
 
-function actualizar() {
-  obtenerCambios(obtenerMonedaSeleccionada(), obtenerFechaSeleccionada())
-    .then((cambios) => mostrarCambios(cambios));
+async function actualizar() {
+  const cambios = await obtenerCambios(obtenerMonedaSeleccionada(), obtenerFechaSeleccionada());
+  mostrarCambios(cambios);
 }
 
-function inicializar() {
+async function inicializar() {
   const $monedas = document.querySelector('#monedas');
   const $fecha = document.querySelector('#fecha');
 
-  obtenerMonedas().then((monedas) => {
-    $monedas.appendChild(mostrarListadoMonedas(monedas, actualizar));
-  });
+  $monedas.appendChild(mostrarListadoMonedas(await obtenerMonedas(), actualizar));
 
   $fecha.addEventListener('change', () => {
     actualizar();
