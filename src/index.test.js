@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 const respuesta = require('../cypress/fixtures/exchange.json');
 
 describe('casa de cambio', () => {
@@ -33,7 +34,7 @@ describe('casa de cambio', () => {
   </div>`;
 
     require('./index.js');
-    window.onload = function () {
+    window.onload = () => {
       const today = (new Date()).toISOString().split('T')[0];
       expect(document.querySelector('#fecha')).toHaveAttribute('max', today);
       done();
