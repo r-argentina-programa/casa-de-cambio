@@ -80,7 +80,9 @@ function mostrarListadoMonedas(monedas) {
 
 function configurarInputFecha() {
   const $fecha = document.querySelector('#fecha');
-  $fecha.setAttribute('max', (new Date()).toISOString().split('T')[0]);
+  // formato YYYY-MM-DD
+  const today = (new Date()).toISOString().split('T')[0];
+  $fecha.setAttribute('max', today);
   $fecha.addEventListener('change', actualizar);
 }
 
