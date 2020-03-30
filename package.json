@@ -16,7 +16,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bootstrap": "^4.4.1"
+    "bootstrap": "^4.4.1",
+    "http-server": "^0.12.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.1.0",
